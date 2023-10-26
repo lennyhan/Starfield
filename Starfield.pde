@@ -46,7 +46,7 @@ class Particle
 class OddballParticle extends Particle
 {
   OddballParticle() {
-    myX = myY = Math.random()*1000;
+    myX = myY = Math.random()*750;
     mySize = 20;
     myAngle = Math.random()*(Math.PI*2);
     mySpeed = Math.random()*10;
