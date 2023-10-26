@@ -1,11 +1,11 @@
-Particle[] Particles = new Particle[301];
+Particle[] Particles = new Particle[300];
 void setup()
 {
   size(750, 750);
-  background(255, 202, 229);
-  for (int i = 0; i < Particles.length; i++) {
+  background(255);
+  Particles[0] = new OddballParticle();
+  for (int i = 1; i < Particles.length; i++) {
     Particles[i] = new Particle();
-    Particles[200] = new OddballParticle();
   }
 }
 
