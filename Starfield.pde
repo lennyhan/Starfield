@@ -1,26 +1,35 @@
-Particle[] Particles = new Particle[201];
+Particle[] Particles = new Particle[301];
 void setup()
 {
-  size(1000, 1000);
+  size(750, 750);
   background(255, 202, 229);
   for (int i = 0; i < Particles.length; i++) {
     Particles[i] = new Particle();
     Particles[200] = new OddballParticle();
   }
 }
-void draw()
-{
+
+void draw(){
+  background(255);
   for (int i = 0; i < Particles.length; i++) {
     Particles[i].show();
     Particles[i].move();
   }
 }
+
+void mousePressed(){
+   for (int i = 0; i < Particles.length; i++) {
+    Particles[i].myX = Particles[i].myY = 375;
+    Particles[i].mySpeed = Math.random()*10;
+   }
+}
+
 class Particle
 {
   double myX, myY, mySize, mySpeed, myAngle;
   Particle() {
-    myX = myY = 500;
-    mySize = 5;
+    myX = myY = 375;
+    mySize = 15;
     myAngle = Math.random()*(Math.PI*2);
     mySpeed = Math.random()*10;
   }
@@ -29,34 +38,33 @@ class Particle
     myY += Math.sin(myAngle)*mySpeed; //(Math.random())*
   }
   void show() {
-    fill(173, 216, 230);
+    fill(0);
     ellipse((float)myX, (float)myY, (float)mySize, (float)mySize);
   }
 }
 
 class OddballParticle extends Particle
 {
-  double myX, myY, size, speed, angle;
   OddballParticle() {
     myX = myY = Math.random()*1000;
-    size = 20;
+    mySize = 20;
     myAngle = Math.random()*(Math.PI*2);
     mySpeed = Math.random()*10;
   }
   void move()
   {
     if (mouseX >= myX)
-    myX += Math.random()*4;
+    myX += 4;
     else if (mouseX <= myX)
-    myX -= Math.random()*4;
+    myX -= 4;
     if (mouseY >= myY)
-    myY += Math.random()*4;
+    myY += 4;
     else if (mouseY <= myY)
-    myY -= Math.random()*4;
+    myY -= 4;
   }
   void show() {
     noStroke();
-    fill(255);
-    ellipse((float)myX, (float)myY, (float)size, (float)size);
+    fill(173, 216, 230);
+    ellipse((float)myX, (float)myY, (float)mySize, (float)mySize);
   }
 }
